@@ -159,7 +159,7 @@ class _SideBarState extends State<SideBar> with SingleTickerProviderStateMixin<S
                 ),
               ),
               Align(
-                alignment: Alignment(0, -0.9),
+                alignment: Alignment(0, -1),
                 child: GestureDetector(
                   onTap: () {
                     onIconPressed();
