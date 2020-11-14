@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:startup_database/bloc.navigation_bloc/navigation_bloc.dart';
+import 'package:startup_database/Activities/editProfile.dart';
+//import 'package:goschedule2/states/currentUser.dart';
+//import 'package:provider/provider.dart';
 
 class Profile extends StatefulWidget with NavigationStates {
   @override
@@ -19,349 +22,340 @@ class MapScreenState extends State<Profile>
 
   @override
   Widget build(BuildContext context) {
+    //CurrentUser _currentUser = Provider.of(context, listen: false);
+
     return new Scaffold(
-        body: new Container(
-      color: Colors.white,
-      child: new ListView(
-        children: <Widget>[
-          Column(
-            children: <Widget>[
-              new Container(
-                height: 250.0,
-                color: Colors.white,
-                child: new Column(
-                  children: <Widget>[
-                    Padding(
-                        padding: EdgeInsets.only(left: 20.0, top: 20.0),
-                        child: new Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            new Icon(
-                              Icons.arrow_back_ios,
-                              color: Colors.black,
-                              size: 22.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 25.0),
-                              child: new Text('PROFILE',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20.0,
-                                      fontFamily: 'sans-serif-light',
-                                      color: Colors.black)),
-                            )
-                          ],
-                        )),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20.0),
-                      child: new Stack(fit: StackFit.loose, children: <Widget>[
-                        new Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            new Container(
-                                width: 140.0,
-                                height: 140.0,
-                                decoration: new BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: new DecorationImage(
-                                    image: new ExactAssetImage(
-                                        './assets/profile.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                )),
-                          ],
-                        ),
-                        Padding(
-                            padding: EdgeInsets.only(top: 90.0, right: 100.0),
-                            child: new Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                new CircleAvatar(
-                                  backgroundColor: Colors.red,
-                                  radius: 25.0,
-                                  child: new Icon(
-                                    Icons.camera_alt,
-                                    color: Colors.white,
-                                  ),
-                                )
-                              ],
-                            )),
-                      ]),
-                    )
-                  ],
-                ),
-              ),
-              new Container(
-                color: Color(0xffFFFFFF),
-                child: Padding(
-                  padding: EdgeInsets.only(bottom: 25.0),
-                  child: new Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 25.0, right: 25.0, top: 25.0),
-                          child: new Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              new Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  new Text(
-                                    'Parsonal Information',
-                                    style: TextStyle(
-                                        fontSize: 18.0,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                              new Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  _status ? _getEditIcon() : new Container(),
-                                ],
-                              )
-                            ],
-                          )),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 25.0, right: 25.0, top: 25.0),
-                          child: new Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              new Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  new Text(
-                                    'Name',
-                                    style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 25.0, right: 25.0, top: 2.0),
-                          child: new Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              new Flexible(
-                                child: new TextField(
-                                  decoration: const InputDecoration(
-                                    hintText: "Enter Your Name",
-                                  ),
-                                  enabled: !_status,
-                                  autofocus: !_status,
-                                ),
-                              ),
-                            ],
-                          )),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 25.0, right: 25.0, top: 25.0),
-                          child: new Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              new Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  new Text(
-                                    'Email ID',
-                                    style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 25.0, right: 25.0, top: 2.0),
-                          child: new Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              new Flexible(
-                                child: new TextField(
-                                  decoration: const InputDecoration(
-                                      hintText: "Enter Email ID"),
-                                  enabled: !_status,
-                                ),
-                              ),
-                            ],
-                          )),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 25.0, right: 25.0, top: 25.0),
-                          child: new Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              new Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  new Text(
-                                    'Mobile',
-                                    style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 25.0, right: 25.0, top: 2.0),
-                          child: new Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: <Widget>[
-                              new Flexible(
-                                child: new TextField(
-                                  decoration: const InputDecoration(
-                                      hintText: "Enter Mobile Number"),
-                                  enabled: !_status,
-                                ),
-                              ),
-                            ],
-                          )),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 25.0, right: 25.0, top: 25.0),
-                          child: new Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                  child: new Text(
-                                    'Position',
-                                    style: TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                                flex: 2,
-                              ),
-                            ],
-                          )),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              left: 25.0, right: 25.0, top: 2.0),
-                          child: new Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Flexible(
-                                child: Padding(
-                                  padding: EdgeInsets.only(right: 10.0),
-                                  child: new TextField(
-                                    decoration: const InputDecoration(
-                                        hintText: "Enter Position"),
-                                    enabled: !_status,
-                                  ),
-                                ),
-                                flex: 2,
-                              ),
-                            ],
-                          )),
-                      !_status ? _getActionButtons() : new Container(),
+      backgroundColor: Colors.blueAccent,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => EditProfile()),
+          );
+        },
+        child: Icon(Icons.edit),
+        backgroundColor: Colors.blue,
+      ),
+      body: ListView(
+        children: [
+          Container(
+            width: 120,
+            height: 120,
+            alignment: Alignment.center,
+            margin: const EdgeInsets.symmetric(vertical: 10),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.person_rounded,
+              size: 60,
+            ),
+          ),
+          Container(
+              width: double.infinity,
+              alignment: Alignment.center,
+              child: Text(
+                "Employee Employee",
+                //_currentUser.getCurrentUser.fullName,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              )),
+          Container(
+              width: double.infinity,
+              alignment: Alignment.center,
+              child: Text(
+                "Cook",
+                //_currentUser.getCurrentUser.position
+              )),
+          Card(
+            margin: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.person_rounded,
+                        size: 32,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Name'),
+                          Text("Employee Employee"),
+                          //Text(_currentUser.getCurrentUser.fullName),
+                        ],
+                      )
                     ],
                   ),
-                ),
-              )
-            ],
+                  Divider(),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.phone_iphone_rounded,
+                        size: 32,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Mobile'),
+                          Text("123-456-7890"),
+                          //Text(_currentUser.getCurrentUser.phoneNo),
+                        ],
+                      )
+                    ],
+                  ),
+                  Divider(),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.email,
+                        size: 32,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Email'),
+                          Text("employee@gmail.com"),
+                          //Text(_currentUser.getCurrentUser.email),
+                        ],
+                      )
+                    ],
+                  ),
+                  Divider(),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.work_rounded,
+                        size: 32,
+                      ),
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Position'),
+                          Text("Cook"),
+                          //Text(_currentUser.getCurrentUser.position)
+                        ],
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Card(
+            margin: const EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 10.0),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Monday',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '09:00 AM - 06:00 PM',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        "9 AM to 6 PM",
+                        //_currentUser.getCurrentUser.monAvailability,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Tuesday',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '09:00 AM - 06:00 PM',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        "9 AM to 6 PM",
+                        //_currentUser.getCurrentUser.tueAvailability,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Wednesday',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '09:00 AM - 06:00 PM',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        "9 AM to 6 PM",
+                        //_currentUser.getCurrentUser.wedAvailability,
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Thursday',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '09:00 AM - 06:00 PM',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        "9 AM to 6 PM",
+                        //_currentUser.getCurrentUser.thuAvailability
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Friday',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '09:00 AM - 06:00 PM',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        "9 AM to 6 PM",
+                        //_currentUser.getCurrentUser.friAvailability
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Saturday',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '09:00 AM - 06:00 PM',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        "9 AM to 6 PM",
+                        //_currentUser.getCurrentUser.satAvailability
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Sunday',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            '09:00 AM - 06:00 PM',
+                            style: TextStyle(fontSize: 10),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        "9 AM to 6 PM",
+                        //_currentUser.getCurrentUser.sunAvailability
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
-    ));
-  }
-
-  @override
-  void dispose() {
-    // Clean up the controller when the Widget is disposed
-    myFocusNode.dispose();
-    super.dispose();
-  }
-
-  Widget _getActionButtons() {
-    return Padding(
-      padding: EdgeInsets.only(left: 25.0, right: 25.0, top: 45.0),
-      child: new Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(right: 10.0),
-              child: Container(
-                  child: new RaisedButton(
-                child: new Text("Save"),
-                textColor: Colors.white,
-                color: Colors.green,
-                onPressed: () {
-                  setState(() {
-                    _status = true;
-                    FocusScope.of(context).requestFocus(new FocusNode());
-                  });
-                },
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0)),
-              )),
-            ),
-            flex: 2,
-          ),
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.only(left: 10.0),
-              child: Container(
-                  child: new RaisedButton(
-                child: new Text("Cancel"),
-                textColor: Colors.white,
-                color: Colors.red,
-                onPressed: () {
-                  setState(() {
-                    _status = true;
-                    FocusScope.of(context).requestFocus(new FocusNode());
-                  });
-                },
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0)),
-              )),
-            ),
-            flex: 2,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _getEditIcon() {
-    return new GestureDetector(
-      child: new CircleAvatar(
-        backgroundColor: Colors.red,
-        radius: 14.0,
-        child: new Icon(
-          Icons.edit,
-          color: Colors.white,
-          size: 16.0,
-        ),
-      ),
-      onTap: () {
-        setState(() {
-          _status = false;
-        });
-      },
     );
   }
 }
